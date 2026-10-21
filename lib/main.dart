@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
-
 import 'models/waypoint.dart';
 import 'widgets/compass.dart';
 
 void main() {
-  runApp(const KGpsLocatorApp());
+  runApp(const MyApp());
 }
 
-class KGpsLocatorApp extends StatelessWidget {
-  const KGpsLocatorApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'kGPS-Locator',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
       home: const HomePage(),
-    ); // MaterialApp
+    );
   }
 }
 
@@ -119,6 +114,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ), // Column
       ), // SafeArea
+
       floatingActionButton: navegandoPara != null
           ? FloatingActionButton.extended(
               onPressed: pararNavegacao,
@@ -126,6 +122,7 @@ class _HomePageState extends State<HomePage> {
               label: const Text('STOP'),
             ) // FloatingActionButton.extended
           : null,
+
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(12),
         child: FilledButton.icon(
@@ -175,12 +172,16 @@ class _HomePageState extends State<HomePage> {
               'NAVEGANDO PARA',
               style: TextStyle(fontWeight: FontWeight.bold),
             ), // Text
+
             const SizedBox(height: 4),
+
             Text(
               navegandoPara!.nome,
               style: const TextStyle(fontSize: 20),
             ),
+
             const SizedBox(height: 4),
+
             const Text('Azimute: --°   Distância: -- m'),
           ],
         ), // Column
@@ -197,21 +198,25 @@ class _HomePageState extends State<HomePage> {
         return Dismissible(
           key: ValueKey(waypoint.nome),
           direction: DismissDirection.endToStart,
+
           background: Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.only(right: 20),
             child: const Icon(Icons.delete, size: 30),
           ), // Container
+
           onDismissed: (_) {
             excluirWaypoint(waypoint);
           },
+
           child: ListTile(
             leading: const Icon(Icons.location_on),
             title: Text(waypoint.nome),
             subtitle: Text(
               '${waypoint.latitude.toStringAsFixed(6)}, '
               '${waypoint.longitude.toStringAsFixed(6)}',
-            ),
+            ), // Text
+
             onLongPress: () {
               navegarPara(waypoint);
             },
