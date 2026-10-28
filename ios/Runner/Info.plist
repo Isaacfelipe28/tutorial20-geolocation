@@ -35,6 +35,8 @@
 			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
 				<dict>
+					<key>NSLocationWhenInUseUsageDescription</key>
+					<string>O kGPS-Locator precisa da localização para mostrar coordenadas e navegar até waypoints.</string>
 					<key>UISceneClassName</key>
 					<string>UIWindowScene</string>
 					<key>UISceneConfigurationName</key>

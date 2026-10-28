@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'package:geolocator/geolocator.dart';
+import 'package:flutter_device_compass/flutter_device_compass.dart';
+
 import 'package:flutter/material.dart';
 import 'models/waypoint.dart';
 import 'widgets/compass.dart';
@@ -28,10 +32,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // Dados fictícios para a Gaveta 2.
-  double latitude = -23.2048746;
-  double longitude = -46.1559800;
-  double altitude = 760.0;
-  double heading = 45.0;
+  double? latitude; 
+  double? longitude;
+  double? altitude;
+  double heading = 0.0;
+
+  String gpsStatus = "Aguardando GPS...";
+  String compassStatus = "Aguardando bússola...";
+
+  StreamSubscription<Position>? gpsSubscripition;
+  StreamSubscription<CompassEvent>? compassSubscripition;
 
   Waypoint? navegandoPara;
 
