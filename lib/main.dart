@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'kGPS-Locator',
+      title: 'kGPS-Locator-Isaac Felipe',
       home: const HomePage(),
     );
   }
